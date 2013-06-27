@@ -1,19 +1,19 @@
-package com.github.multicall.aggregators;
+package com.github.multicall.aggregators.testbeans;
 
-import java.util.LinkedList;
-import java.util.List;
-
-public class DoubleBean {
+public class DoubleBean extends AbstractBean<Double, DoubleBean> {
     private double primitive;
-    private Double object;
 
     @SuppressWarnings("UnusedDeclaration")
     public DoubleBean() {
     }
 
     public DoubleBean(double value) {
+        super(value);
         this.primitive = value;
-        this.object = value;
+    }
+
+    protected DoubleBean create(Double value) {
+        return new DoubleBean(value);
     }
 
     public double getPrimitive() {
@@ -31,13 +31,4 @@ public class DoubleBean {
     public void setObject(Double object) {
         this.object = object;
     }
-
-    public static List<DoubleBean> testCollection(double ... values) {
-        List<DoubleBean> beans = new LinkedList<DoubleBean>();
-        for (double value : values) {
-            beans.add(new DoubleBean(value));
-        }
-        return beans;
-    }
-
 }
