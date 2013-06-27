@@ -7,6 +7,7 @@ import com.github.multicall.aggregators.testbeans.IntBean;
 import com.github.multicall.aggregators.testbeans.LongBean;
 import junit.framework.Assert;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -43,6 +44,10 @@ public abstract class AbstractAggregatorTest {
         LongBean bean = aggregate(Aggregators.create(LongBean.class), new LongBean().list(values));
         Assert.assertEquals(expected, bean.getPrimitive());
         Assert.assertEquals(Long.valueOf(expected), bean.getObject());
+    }
+
+    protected <T> T testObject(Class<T> clazz, T... values) {
+        return aggregate(Aggregators.create(clazz), Arrays.asList(values));
     }
 
 }
