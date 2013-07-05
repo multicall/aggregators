@@ -1,15 +1,17 @@
 package com.github.multicall.aggregators;
 
+import com.github.multicall.AbstractAggregator;
 import com.github.multicall.aggregators.impl.InvokeInterceptor;
 import com.github.multicall.aggregators.impl.MaxInterceptor;
-import net.sf.cglib.proxy.Enhancer;
-import net.sf.cglib.proxy.MethodInterceptor;
 
-public class Aggregator<T> {
-    private Class<T> clazz;
-
+/**
+ * This type of aggregator provides methods that have return type exactly matching return type of method they use.
+ *
+ * @param <T> Class of the objects to aggregate
+ */
+public class Aggregator<T> extends AbstractAggregator<T> {
     Aggregator(Class<T> clazz) {
-        this.clazz = clazz;
+        super(clazz);
     }
 
     public T all(Iterable<T> iterable) {
@@ -20,11 +22,4 @@ public class Aggregator<T> {
         return spawn(new MaxInterceptor<T>(iterable));
     }
 
-    @SuppressWarnings("unchecked")
-    T spawn(MethodInterceptor callback) {
-        Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(clazz.isInterface() ? Object.class : clazz);
-        enhancer.setCallback(callback);
-        return (T) enhancer.create();
-    }
 }
