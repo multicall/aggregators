@@ -1,6 +1,5 @@
 package com.github.multicall.aggregators;
 
-import com.github.multicall.aggregators.testbeans.NestedBean;
 import com.github.multicall.aggregators.testbeans.ParentBean;
 import junit.framework.Assert;
 import org.junit.Test;
@@ -35,15 +34,10 @@ public class MaxAggregatorTest extends AbstractAggregatorTest {
 
     @Test
     public void testNotComparable() throws Exception {
-        Assert.assertNull(testObject(ParentBean.class, new ParentBean()).getObject());
-    }
-
-    @Test
-    public void testInvoke() throws Exception {
-        NestedBean nestedBean = new NestedBean();
-        ParentBean parentBean = new ParentBean();
-        testObject(ParentBean.class, parentBean).setObject(nestedBean);
-        Assert.assertSame(nestedBean, parentBean.getObject());
+        ParentBean bean1 = new ParentBean();
+        ParentBean bean2 = new ParentBean();
+        Assert.assertNull(testObject(ParentBean.class, bean1, bean2).getObject());
+        //TODO assert that method has been called
     }
 
     @Override
