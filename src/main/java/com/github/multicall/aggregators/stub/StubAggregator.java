@@ -1,16 +1,16 @@
-package com.github.multicall.aggregators;
+package com.github.multicall.aggregators.stub;
 
 import com.github.multicall.AbstractAggregator;
-import com.github.multicall.aggregators.impl.InvokeInterceptor;
-import com.github.multicall.aggregators.impl.MaxInterceptor;
+import com.github.multicall.aggregators.stub.interceptor.InvokeInterceptor;
+import com.github.multicall.aggregators.stub.interceptor.MaxInterceptor;
 
 /**
  * This type of aggregator provides methods that have return type exactly matching return type of method they use.
  *
  * @param <T> Class of the objects to aggregate
  */
-public class Aggregator<T> extends AbstractAggregator<T> {
-    Aggregator(Class<T> clazz) {
+public class StubAggregator<T> extends AbstractAggregator<T> {
+    public StubAggregator(Class<T> clazz) {
         super(clazz);
     }
 

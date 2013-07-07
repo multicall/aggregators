@@ -1,5 +1,6 @@
-package com.github.multicall.aggregators;
+package com.github.multicall.aggregators.stub;
 
+import com.github.multicall.aggregators.Aggregators;
 import com.github.multicall.aggregators.testbeans.BooleanBean;
 import com.github.multicall.aggregators.testbeans.DoubleBean;
 import com.github.multicall.aggregators.testbeans.FloatBean;
@@ -14,7 +15,7 @@ import java.util.List;
  * Provides convenience methods to do joint testing on primitives and corresponding object types
  */
 public abstract class AbstractAggregatorTest {
-    protected abstract <T> T aggregate(Aggregator<T> aggregator, List<T> iterable);
+    protected abstract <T> T aggregate(StubAggregator<T> aggregator, List<T> iterable);
 
     protected void testBoolean(boolean expected, Boolean... values) {
         BooleanBean bean = aggregate(Aggregators.create(BooleanBean.class), new BooleanBean().list(values));

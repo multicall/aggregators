@@ -4,7 +4,7 @@ import com.github.multicall.AbstractAggregator;
 import com.github.multicall.aggregators.dynamic.delegates.DelegateCollection;
 import com.github.multicall.aggregators.dynamic.delegates.DelegateIterable;
 import com.github.multicall.aggregators.dynamic.delegates.DelegateList;
-import com.github.multicall.aggregators.interceptors.CaptureInterceptor;
+import com.github.multicall.aggregators.dynamic.interceptor.CaptureInterceptor;
 
 import java.util.Collection;
 import java.util.List;

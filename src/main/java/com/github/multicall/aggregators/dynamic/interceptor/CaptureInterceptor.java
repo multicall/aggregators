@@ -1,4 +1,4 @@
-package com.github.multicall.aggregators.interceptors;
+package com.github.multicall.aggregators.dynamic.interceptor;
 
 import com.github.multicall.aggregators.MethodCall;
 import net.sf.cglib.proxy.MethodInterceptor;

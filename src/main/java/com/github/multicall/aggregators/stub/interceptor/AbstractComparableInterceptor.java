@@ -1,4 +1,4 @@
-package com.github.multicall.aggregators.impl;
+package com.github.multicall.aggregators.stub.interceptor;
 
 import net.sf.cglib.proxy.MethodProxy;
 

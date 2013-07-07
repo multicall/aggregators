@@ -1,15 +1,14 @@
-package com.github.multicall.aggregators.impl;
+package com.github.multicall.aggregators.stub.interceptor;
 
-import com.github.multicall.aggregators.AbstractMethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
 
 /**
  * The simplest interceptor that only calls specified method for each collection object. Returns null or default value for privitives.
- * @param <T> see {@link #AbstractMethodInterceptor}
+ * @param <T> see {@link #AbstractIterableInterceptor}
  */
-public class InvokeInterceptor<T> extends AbstractMethodInterceptor<T> {
+public class InvokeInterceptor<T> extends AbstractIterableInterceptor<T> {
     public InvokeInterceptor(Iterable<T> objects) {
         super(objects);
     }

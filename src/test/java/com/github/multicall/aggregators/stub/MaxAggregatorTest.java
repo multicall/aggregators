@@ -1,4 +1,4 @@
-package com.github.multicall.aggregators;
+package com.github.multicall.aggregators.stub;
 
 import com.github.multicall.aggregators.testbeans.ParentBean;
 import junit.framework.Assert;
@@ -41,7 +41,7 @@ public class MaxAggregatorTest extends AbstractAggregatorTest {
     }
 
     @Override
-    protected <T> T aggregate(Aggregator<T> aggregator, List<T> iterable) {
+    protected <T> T aggregate(StubAggregator<T> aggregator, List<T> iterable) {
         return aggregator.max(iterable);
     }
 }
