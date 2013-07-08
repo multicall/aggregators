@@ -23,6 +23,10 @@ public class DynamicAggregator<T> extends AbstractAggregator<T> {
         super(clazz);
     }
 
+    public static <T> DynamicAggregator<T> create(Class<T> clazz){
+        return new DynamicAggregator<T>(clazz);
+    }
+
     /**
      * Creates new capture interceptor to capture method calls.
      *
