@@ -1,5 +1,6 @@
 package com.github.multicall.aggregators.dynamic;
 
+import com.github.multicall.aggregators.Aggregators;
 import com.github.multicall.aggregators.testbeans.BooleanBean;
 import com.github.multicall.aggregators.testbeans.DoubleBean;
 import com.github.multicall.testutils.TestUtils;
@@ -14,7 +15,7 @@ public class DynamicAggregatorTest {
 
     @Test
     public void testNumbers() throws Exception {
-        DynamicAggregator<Number> a = DynamicAggregator.create(Number.class);
+        DynamicAggregator<Number> a = Aggregators.dynamic(Number.class);
         List<? extends Number> list = Arrays.asList(1L, 2D, 3);
         @SuppressWarnings("unchecked")
         List<Number> numbers = (List<Number>) list;
@@ -25,7 +26,7 @@ public class DynamicAggregatorTest {
     @Test
     public void testDouble() throws Exception {
         Double[] orig = new Double[]{1.3, 2.2};
-        DynamicAggregator<DoubleBean> a = DynamicAggregator.create(DoubleBean.class);
+        DynamicAggregator<DoubleBean> a = Aggregators.dynamic(DoubleBean.class);
 
         List<DoubleBean> list = new DoubleBean().list(orig);
         Assert.assertArrayEquals(orig, a.flat(list, a.stub().getPrimitive()).toArray());
@@ -44,7 +45,7 @@ public class DynamicAggregatorTest {
     @SuppressWarnings("UnnecessaryLocalVariable")
     public void testBoolean() throws Exception {
         Boolean[] orig = {false, true};
-        DynamicAggregator<BooleanBean> a = DynamicAggregator.create(BooleanBean.class);
+        DynamicAggregator<BooleanBean> a = Aggregators.dynamic(BooleanBean.class);
 
         List<BooleanBean> list = new BooleanBean().list(orig);
         Assert.assertArrayEquals(orig, a.flat(list, a.stub().getPrimitive()).toArray());
