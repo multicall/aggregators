@@ -60,4 +60,12 @@ public class DynamicAggregatorTest {
         Assert.assertArrayEquals(orig, TestUtils.toArray(a.flat(iter, a.stub().getObject())));
     }
 
+    @Test
+    public void testMax() throws Exception {
+        Double[] orig = new Double[]{1.3, 2.2};
+        DynamicAggregator<DoubleBean> a = Aggregators.dynamic(DoubleBean.class);
+        List<DoubleBean> list = new DoubleBean().list(orig);
+        Double max = a.max(list, a.stub().getObject());
+        Assert.assertEquals(Double.valueOf(2.2), max);
+    }
 }

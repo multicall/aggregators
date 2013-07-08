@@ -1,6 +1,7 @@
 package com.github.multicall.aggregators.dynamic;
 
 import com.github.multicall.AbstractAggregator;
+import com.github.multicall.aggregators.MethodCall;
 import com.github.multicall.aggregators.dynamic.delegates.DelegateCollection;
 import com.github.multicall.aggregators.dynamic.delegates.DelegateIterable;
 import com.github.multicall.aggregators.dynamic.delegates.DelegateList;
@@ -67,6 +68,19 @@ public class DynamicAggregator<T> extends AbstractAggregator<T> {
     public <V> List<V> flat(List<T> objects, @SuppressWarnings("UnusedParameters") V capture) {
         return new DelegateList<T, V>(interceptor.getLastCall(), objects);
     }
+
+    public <V extends Comparable<V>> V max(Iterable<T> iterable, @SuppressWarnings("UnusedParameters") V capture) {
+        MethodCall<T> call = interceptor.getLastCall();
+        V ext = null;
+        for (T object : iterable) {
+            V value = call.replay(object);
+            if (value != null && (ext == null || ext.compareTo(value) < 0)) {
+                ext = value;
+            }
+        }
+        return ext;
+    }
+
 
     @SuppressWarnings("UnusedDeclaration")
     public <V> List<V> flat(Iterable<T> objects, Collection<V> collection, V capture) {
