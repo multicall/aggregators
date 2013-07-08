@@ -23,13 +23,13 @@ public class InvokeAggregatorTest {
 
     @Test
     public void testCallDouble() throws Exception {
-        List<DoubleBean> data = new DoubleBean().list(2d, 3d);
+        DoubleBean[] data = new DoubleBean[]{new DoubleBean(2d), new DoubleBean(3d)};
         aggregator.all(data).setPrimitive(1);
         aggregator.all(data).setObject(5D);
-        Assert.assertEquals(1D, data.get(0).getPrimitive());
-        Assert.assertEquals(1D, data.get(1).getPrimitive());
-        Assert.assertEquals(5D, data.get(0).getObject());
-        Assert.assertEquals(5D, data.get(1).getObject());
+        Assert.assertEquals(1D, data[0].getPrimitive());
+        Assert.assertEquals(1D, data[1].getPrimitive());
+        Assert.assertEquals(5D, data[0].getObject());
+        Assert.assertEquals(5D, data[1].getObject());
     }
 
     @Test

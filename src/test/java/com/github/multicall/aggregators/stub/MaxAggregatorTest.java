@@ -1,5 +1,7 @@
 package com.github.multicall.aggregators.stub;
 
+import com.github.multicall.aggregators.Aggregators;
+import com.github.multicall.aggregators.testbeans.DoubleBean;
 import com.github.multicall.aggregators.testbeans.ParentBean;
 import junit.framework.Assert;
 import org.junit.Test;
@@ -10,6 +12,14 @@ public class MaxAggregatorTest extends AbstractAggregatorTest {
     @Test
     public void testBoolean() throws Exception {
         testBoolean(true, false, true);
+    }
+
+    @Test
+    public void testArray() throws Exception {
+        StubAggregator<DoubleBean> a = Aggregators.create(DoubleBean.class);
+        DoubleBean max = a.max(new DoubleBean(2.7), new DoubleBean(3.3));
+        Assert.assertEquals(3.3d, max.getPrimitive());
+        Assert.assertEquals(3.3d, max.getObject());
     }
 
     @Test
