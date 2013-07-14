@@ -1,7 +1,6 @@
 package com.github.multicall.aggregators.stub;
 
 import com.github.multicall.AbstractAggregator;
-import com.github.multicall.aggregators.stub.interceptor.ExtremumInterceptor;
 import com.github.multicall.aggregators.stub.interceptor.InvokeInterceptor;
 import com.github.multicall.util.ArrayIteratorWrapper;
 
@@ -25,11 +24,4 @@ public class StubAggregator<T> extends AbstractAggregator<T> {
         return spawn(new InvokeInterceptor<T>(iterable));
     }
 
-    public T min(T... array) {
-        return min(new ArrayIteratorWrapper<T>(array));
-    }
-
-    public T min(Iterable<T> iterable) {
-        return spawn(new ExtremumInterceptor<T>(iterable, false));
-    }
 }
