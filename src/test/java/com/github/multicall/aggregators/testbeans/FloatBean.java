@@ -1,6 +1,13 @@
 package com.github.multicall.aggregators.testbeans;
 
+import com.github.multicall.grabber.Grabber;
+import com.github.multicall.grabber.MethodCall;
+
 public class FloatBean extends AbstractBean<Float, FloatBean> {
+    private final static Grabber<FloatBean> g = Grabber.create(FloatBean.class);
+    public final static MethodCall<FloatBean, Float> GET_PRIVITIVE = g.grab(g.stub().getPrimitive(), float.class);
+    public final static MethodCall<FloatBean, Float> GET_OBJECT = g.grab(g.stub().getObject(), Float.class);
+
     private float primitive;
 
     @SuppressWarnings("UnusedDeclaration")

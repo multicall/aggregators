@@ -25,14 +25,6 @@ public class StubAggregator<T> extends AbstractAggregator<T> {
         return spawn(new InvokeInterceptor<T>(iterable));
     }
 
-    public T max(T... array) {
-        return max(new ArrayIteratorWrapper<T>(array));
-    }
-
-    public T max(Iterable<T> iterable) {
-        return spawn(new ExtremumInterceptor<T>(iterable, true));
-    }
-
     public T min(T... array) {
         return min(new ArrayIteratorWrapper<T>(array));
     }
