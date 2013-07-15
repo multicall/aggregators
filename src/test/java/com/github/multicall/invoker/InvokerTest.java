@@ -1,6 +1,5 @@
-package com.github.multicall.aggregators.stub;
+package com.github.multicall.invoker;
 
-import com.github.multicall.aggregators.Aggregators;
 import com.github.multicall.aggregators.testbeans.DoubleBean;
 import com.github.multicall.aggregators.testbeans.NestedBean;
 import com.github.multicall.aggregators.testbeans.ParentBean;
@@ -10,8 +9,8 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class InvokeAggregatorTest {
-    private final StubAggregator<DoubleBean> aggregator = Aggregators.create(DoubleBean.class);
+public class InvokerTest {
+    private final Invoker<DoubleBean> aggregator = Invoker.create(DoubleBean.class);
 
     @Test
     public void testReturnValue() throws Exception {
@@ -36,7 +35,7 @@ public class InvokeAggregatorTest {
     public void testCallObject() throws Exception {
         NestedBean nestedBean = new NestedBean();
         ParentBean parentBean = new ParentBean();
-        StubAggregator<ParentBean> a = new StubAggregator<ParentBean>(ParentBean.class);
+        Invoker<ParentBean> a = new Invoker<ParentBean>(ParentBean.class);
         a.all(Arrays.asList(parentBean)).setObject(nestedBean);
         Assert.assertSame(nestedBean, parentBean.getObject());
     }

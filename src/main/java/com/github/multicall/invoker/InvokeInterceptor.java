@@ -1,4 +1,4 @@
-package com.github.multicall.aggregators.stub.interceptor;
+package com.github.multicall.invoker;
 
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -10,8 +10,8 @@ import java.lang.reflect.Method;
  *
  * @param <T> Bean class. Must have public no-args constructor.
  */
-public class InvokeInterceptor<T> implements MethodInterceptor {
-    protected final Iterable<T> objects;
+class InvokeInterceptor<T> implements MethodInterceptor {
+    private final Iterable<T> objects;
 
     public InvokeInterceptor(Iterable<T> objects) {
         this.objects = objects;
