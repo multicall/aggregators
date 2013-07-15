@@ -53,7 +53,8 @@ public class Grabber<T> {
      * @param <V> Method return value type
      * @return Captured method call
      */
-    public <V> MethodCall<T, V> grab(@SuppressWarnings("UnusedParameters") V capture, Class<V> clazz) {
+    @SuppressWarnings("UnusedParameters")
+    public <V> MethodCall<T, V> grab(V capture, Class<V> clazz) {
         return interceptor.getLastCall().returns(clazz);
     }
 
