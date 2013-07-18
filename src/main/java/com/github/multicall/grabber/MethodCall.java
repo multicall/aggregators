@@ -12,9 +12,8 @@ public interface MethodCall<T, U> {
      *
      * @param obj Object to call method on
      * @return value returned by method
-     * @deprecated do we really need it?
      */
-    U replayUnsafe(T obj) throws Throwable;
+    U replayUnsafe(T obj);
 
     /**
      * Replays method call on a specified object.

@@ -1,6 +1,6 @@
-package com.github.multicall.aggregators.dynamic.delegates;
+package com.github.multicall.aggregators.delegates;
 
-import com.github.multicall.aggregators.MethodCall;
+import com.github.multicall.grabber.MethodCall;
 
 import java.util.Iterator;
 
@@ -11,14 +11,14 @@ import java.util.Iterator;
  */
 public class DelegateIterator<T, V> implements Iterator<V> {
     private Iterator<T> delegate;
-    private MethodCall<T> call;
+    private MethodCall<T, V> call;
 
     /**
      * Creates new instance.
      * @param delegate iterator will delegate iteration here
      * @param call details on the method to call
      */
-    public DelegateIterator(Iterator<T> delegate, MethodCall<T> call) {
+    public DelegateIterator(Iterator<T> delegate, MethodCall<T, V> call) {
         this.call = call;
         this.delegate = delegate;
     }
@@ -30,11 +30,12 @@ public class DelegateIterator<T, V> implements Iterator<V> {
 
     @Override
     public V next() {
-        return call.replay(delegate.next());
+        return call.replayUnsafe(delegate.next());
     }
 
     @Override
     public void remove() {
-        delegate.remove();
+        throw new UnsupportedOperationException("This list is real-only");
+//        delegate.remove();
     }
 }
