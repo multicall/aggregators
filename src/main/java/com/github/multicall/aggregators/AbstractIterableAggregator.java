@@ -1,13 +1,12 @@
 package com.github.multicall.aggregators;
 
 import com.github.multicall.grabber.MethodCall;
-import com.github.multicall.util.Callable;
 
 /**
  * Superclass for 'instance utility' type aggregators that operate on collections.
  * This allows to avoid duplicated error-handling in the end-user method implementations by using CallUtil
  */
-public abstract class AbstractIterableAggregator<T, V, U extends Iterable<? extends T>, R> implements Callable<R> {
+public abstract class AbstractIterableAggregator<T, V, U extends Iterable<? extends T>> {
     protected final U objects;
     protected final MethodCall<T, V> call;
 
