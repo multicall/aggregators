@@ -5,6 +5,7 @@ import net.sf.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
 import java.text.MessageFormat;
+import java.util.Arrays;
 
 /**
  * Method call intercepted by cglib.
@@ -48,9 +49,18 @@ class InterceptedCall<T, U> implements MethodCall<T, U> {
             return (MethodCall<T, V>) this;
         } else {
             throw new ClassCastException(MessageFormat.format(
-                    "Return type [{0}] of method [{2}] is not compatible with [{3}]",
-                    method.getClass().getName(), method.getName(), clazz.getName())
+                    "Return type [{2}] of method [{0}.{1}] is not compatible with [{3}]",
+                    method.getDeclaringClass().getName(), method.getName(), clazz.getName(), method.getReturnType())
             );
         }
+    }
+
+    @Override
+    public String toString() {
+        return "InterceptedCall{" +
+                "method=" + method +
+                ", proxy=" + proxy +
+                ", args=" + (args == null ? null : Arrays.asList(args)) +
+                '}';
     }
 }
