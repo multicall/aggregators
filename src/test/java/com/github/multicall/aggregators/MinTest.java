@@ -1,9 +1,16 @@
 package com.github.multicall.aggregators;
 
+import com.github.multicall.grabber.MethodCall;
+import com.github.multicall.testutils.BeanSubject;
 import org.junit.Test;
 
 public class MinTest {
-    private final static Min SUBJECT = Min.INSTANCE;
+    private final static BeanSubject SUBJECT = new BeanSubject() {
+        @Override
+        public <T, V extends Comparable<V>> V aggregate(Iterable<T> beans, MethodCall<T, V> call) {
+            return Min.aggregate(beans, call);
+        }
+    };
 
     @Test
     public void testBoolean() throws Exception {
