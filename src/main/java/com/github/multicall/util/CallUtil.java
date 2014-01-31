@@ -7,10 +7,12 @@ import com.github.multicall.aggregators.AggregationException;
  */
 public class CallUtil {
     /**
-     * Filters out throwables and wraps them into
+     * Filters out throwables and wraps them into AggregationException
      * @param callable code to call
      * @param <V> return value type
      * @return value returned by the call
+     * @throws AggregationException if a checked exception or a custom throwable occurs.
+     * Runtime exceptions and errors are allowed to fly through normally.
      */
     public static <V> V call(Callable<V> callable) {
         try {
