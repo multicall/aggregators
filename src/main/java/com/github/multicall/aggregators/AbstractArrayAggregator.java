@@ -4,18 +4,20 @@ import com.github.multicall.grabber.MethodCall;
 import com.github.multicall.util.ArrayIteratorWrapper;
 
 /**
- * TODO doc
+ * Shared code to support aggregators that can operate on a collection or array.
  */
-public abstract class AbstractArrayAggregator<T, V, R> extends AbstractAggregator<T, V> {
+abstract class AbstractArrayAggregator<T, V, R> extends AbstractAggregator<T, V> implements Aggregator<T, R> {
     protected AbstractArrayAggregator(MethodCall<T, V> call) {
         super(call);
     }
 
+    @Override
     public R run(T... objects) {
         return run(new ArrayIteratorWrapper<T>(objects));
     }
 
-    public R run(Iterable <T> objects) {
+    @Override
+    public R run(Iterable<T> objects) {
         try {
             return aggregate(objects);
         } catch (RuntimeException e) {

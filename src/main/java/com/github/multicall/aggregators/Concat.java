@@ -8,6 +8,7 @@ import java.util.Iterator;
 
 /**
  * Concatenates method return values into string.
+ * @deprecated TODO Rewrite to extend AbstractArrayAggregator. DO NOT USE UNTIL THAT HAPPENS.
  */
 public class Concat<T, V> extends AbstractIterableAggregator<T, V, Iterable<? extends T>> implements Callable<String> {
     private final String separator;

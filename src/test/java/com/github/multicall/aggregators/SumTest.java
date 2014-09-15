@@ -48,6 +48,12 @@ public class SumTest {
     }
 
     @Test
+    public void testBigDecimal_null() throws Throwable {
+        Sum<BigDecimalBean, BigDecimal> subj = new Sum<BigDecimalBean, BigDecimal>(BigDecimalBean.GET_OBJECT, Arithmetics.BIG_DECIMAL);
+        Assert.assertEquals(new BigDecimal("4.4"), subj.run(new BigDecimalBean().list(new BigDecimal("1.1"), null, new BigDecimal("3.3"))));
+    }
+
+    @Test
     public void testArray() throws Throwable {
         Sum<IntBean, Integer> subj = new Sum<IntBean, Integer>(IntBean.GET_OBJECT, Arithmetics.INTEGER);
         List<IntBean> list = new IntBean().list(1, 2, 3);

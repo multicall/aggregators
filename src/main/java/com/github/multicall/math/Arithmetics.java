@@ -56,7 +56,9 @@ public interface Arithmetics<T> {
         public BigDecimal sum(Iterable<BigDecimal> summands) {
             BigDecimal s = BigDecimal.ZERO;
             for (BigDecimal v : summands) {
-                s = s.add(v);
+                if (v != null) {
+                    s = s.add(v);
+                }
             }
             return s;
         }
