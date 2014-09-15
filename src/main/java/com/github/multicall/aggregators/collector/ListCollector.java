@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * see {@link #collect(Iterable, MethodCall, java.util.List)} description for details.
+ * @deprecated TODO Rewrite to extend AbstractArrayAggregator. DO NOT USE UNTIL THAT HAPPENS.
  */
 public class ListCollector<T, V, U extends Iterable<? extends T>, R extends List<V>> extends AbstractChainingAggregator<V, T, U, R> {
     public ListCollector(U objects, MethodCall<T, V> call, R list) {

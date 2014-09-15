@@ -9,6 +9,7 @@ import java.util.Map;
 /**
  * Collects objects from collection into map using values, returned by specified method as key.
  * see {@link #collect(Iterable, com.github.multicall.grabber.MethodCall, java.util.Map)} description for details.
+ * @deprecated TODO Rewrite to extend AbstractArrayAggregator. DO NOT USE UNTIL THAT HAPPENS.
  */
 public class MapCollector<T, V, U extends Iterable<? extends T>, R extends Map<V, T>> extends AbstractChainingAggregator<V, T, U, R> {
     public MapCollector(U objects, MethodCall<T, V> call, R retVal) {

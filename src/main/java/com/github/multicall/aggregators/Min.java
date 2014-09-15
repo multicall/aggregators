@@ -6,6 +6,7 @@ import com.github.multicall.util.Callable;
 
 /**
  * Calculates minimum for comparable objects.
+ * @deprecated TODO Rewrite to extend AbstractArrayAggregator. DO NOT USE UNTIL THAT HAPPENS.
  */
 public class Min<T, V extends Comparable<V>> extends AbstractIterableAggregator<T, V, Iterable<? extends T>> implements Callable<V> {
     /**

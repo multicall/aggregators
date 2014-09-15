@@ -32,7 +32,6 @@ public class FlatTest {
     }
 
     @Test
-    @SuppressWarnings("UnnecessaryLocalVariable")
     public void testBoolean() throws Exception {
         test(new Boolean[]{false, true}, BooleanBean.GET_PRIVITIVE, BooleanBean.GET_OBJECT, new BooleanBean());
     }
